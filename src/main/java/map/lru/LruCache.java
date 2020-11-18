@@ -25,13 +25,18 @@ public class LruCache<K, V> {
 
     public void put(K k, V v) {
         DLinkedNode<V> node = lruMap.get(k);
+        // map中不存在
         if (node == null) {
+            // map容量已满，移除最久未使用的
             if (lruMap.size() >= cap) {
                 removeLast();
                 lruMap.remove(k);
             }
+            // 将新值插入队头
             addFirst(v);
-        } else {
+        }
+        // map中已存在，更新value
+        else {
             node.v = v;
         }
     }
