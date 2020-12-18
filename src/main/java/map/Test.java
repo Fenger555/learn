@@ -10,18 +10,8 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) {
-        HashMap<String, String> map = new HashMap<>();
-
-        for (int i = 0; i < 11; i++) {
-            map.put("a" + i, "c");
-        }
-
-        map.put("1", "");
-        map.put("2", "");
-        map.put("3", "");
-
-
-
+        System.out.println(1<<25);
+        System.out.println(Math.pow(2,25));
 
     }
 }

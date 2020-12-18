@@ -3,7 +3,6 @@ package flink.worldcount;
 import com.google.common.collect.Lists;
 import org.apache.flink.api.common.typeinfo.TypeHint;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
-import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.functions.FlatMapIterator;
 import org.apache.flink.api.java.operators.AggregateOperator;
@@ -33,7 +32,6 @@ public class WorldCountBatch {
                         }
                 )
                 .map(world -> new Tuple2(world, 1))
-                .returns(Types.TUPLE(Types.STRING, Types.INT))
                 .groupBy(0)
                 .sum(1);
 
