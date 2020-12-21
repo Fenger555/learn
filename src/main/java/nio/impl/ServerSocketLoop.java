@@ -1,8 +1,10 @@
 package nio.impl;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -54,7 +56,7 @@ public class ServerSocketLoop {
             InputStream inputStream = null;
             OutputStream outputStream = null;
             try {
-                outputStream = socket.getOutputStream();
+                outputStream = new FileOutputStream("/Users/gaoxing/Downloads/"+Thread.currentThread().getName());
                 inputStream = socket.getInputStream();
                 int len;
                 while ((len = inputStream.read(in)) != -1) {
@@ -74,8 +76,12 @@ public class ServerSocketLoop {
     }
 
     public static void main(String[] args) {
+
         Server server = new Server(9999);
         new Thread(server, "Server").start();
+
+        // nc localhost 9999
+
     }
 
 }
