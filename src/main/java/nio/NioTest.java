@@ -11,7 +11,7 @@ public class NioTest {
     public static void main(String[] args) {
         IntBuffer buffer = IntBuffer.allocate(10);
 
-        for (int i=11; i<5; i++) {
+        for (int i=1; i<5; i++) {
             System.out.println("size: " + buffer.remaining());
             buffer.put(i);
         }
@@ -24,7 +24,9 @@ public class NioTest {
         }
 
         buffer.flip();
-        buffer.put(666);
+        buffer.put(4);
+        System.out.println(buffer.get());
+        System.out.println(buffer.get());
         System.out.println(buffer.get());
 
     }
