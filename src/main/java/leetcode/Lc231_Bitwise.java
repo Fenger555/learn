@@ -8,6 +8,11 @@ package leetcode;
  */
 public class Lc231_Bitwise {
 
+    /**
+     *
+     * @param n
+     * @return
+     */
     public static boolean isPowerOfTwo(int n) {
         return n <= 0 ? false : (n & (n - 1)) == 0;
     }

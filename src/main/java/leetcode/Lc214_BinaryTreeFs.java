@@ -42,6 +42,7 @@ public class Lc214_BinaryTreeFs {
         return maxChildTreeSum(root);
     }
 
+    // todo bug
     public int maxChildTreeSum(TreeNode treeNode) {
 
         if (treeNode == null) {
@@ -69,6 +70,11 @@ public class Lc214_BinaryTreeFs {
         Lc214_BinaryTreeFs treeFs = new Lc214_BinaryTreeFs();
 
 
+    }
+
+    public TreeNode buildTree(int[] nums) {
+
+        return null;
     }
 
 }
