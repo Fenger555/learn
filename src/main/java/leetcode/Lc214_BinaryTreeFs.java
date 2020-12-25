@@ -58,7 +58,7 @@ public class Lc214_BinaryTreeFs {
 
         int childMaxSum = max(leftSum, rightSum);
 
-        return treeNode.val < 0 && childMaxSum>treeNode.val ? childMaxSum : treeNode.val+max(leftSum, 0)+max(rightSum,0);
+        return treeNode.val == 0 && childMaxSum>treeNode.val ? childMaxSum : treeNode.val+max(leftSum, 0)+max(rightSum,0);
 
     }
 
@@ -68,8 +68,6 @@ public class Lc214_BinaryTreeFs {
 
     public static void main(String[] args) {
         Lc214_BinaryTreeFs treeFs = new Lc214_BinaryTreeFs();
-
-
     }
 
     public TreeNode buildTree(int[] nums) {
