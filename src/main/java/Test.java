@@ -1,7 +1,10 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.BitSet;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * @Author gaoxing
@@ -10,6 +13,9 @@ import java.util.Random;
 public class Test {
 
     public static void main(String[] args) {
+
+        String collect = Lists.newArrayList().stream().map(v -> v.toString()).collect(Collectors.joining(","));
+        System.out.println(collect);
 
         int a=1,b=2,c=3;
         a=b=c;
