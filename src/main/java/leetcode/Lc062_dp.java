@@ -16,7 +16,7 @@ public class Lc062_dp {
     // 其他方法，利用组合数学公式：C(m-1, m+n-2)
 
     // dp[x][y] = dp[x-1][y] + dp[x][y-1]
-    public int uniquePaths(int m, int n) {
+    public int uniquePaths1(int m, int n) {
 
         int[][] dp = new int[m][n];
 
@@ -36,9 +36,30 @@ public class Lc062_dp {
         return dp[m-1][n-1];
     }
 
+    public int uniquePaths(int m, int n) {
+
+        int[] dp = new int[m*n];
+
+        for (int i = 0; i < n; i++) {
+            dp[i]=1;
+        }
+        for (int i = 0; i < m; i++) {
+            dp[i*n]=1;
+        }
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i*n+j] = dp[(i-1)*n+j] + dp[i*n+j-1];
+            }
+        }
+
+        return dp[m*n-1];
+    }
+
     public static void main(String[] args) {
-        int rs = new Lc062_dp().uniquePaths(111, 2);
-        System.out.println(rs);
+        Lc062_dp dp = new Lc062_dp();
+
+        System.out.println(dp.uniquePaths(3,29) +" " + dp.uniquePaths1(3,29));
     }
 
 }

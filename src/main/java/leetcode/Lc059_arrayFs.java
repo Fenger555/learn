@@ -69,7 +69,6 @@ public class Lc059_arrayFs {
     public static void main(String[] args) {
         int[][] ints = generateMatrix(1);
         System.out.println(ints);
-
     }
 
 }
