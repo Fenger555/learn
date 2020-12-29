@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。
+ *
  * @author Fenger
  * @date 2020-12-28 17:32
  */
@@ -29,16 +31,16 @@ public class Lc054_arrayFs {
             if (r == rowNum || c == colNum) {
                 break;
             }
-            System.out.println(String.format("(%s,%s) %s-%s, %s-%s", x, y, r, c,rFlag,cFlag));
-            System.out.println(matrix[x][y]);
+//            System.out.println(String.format("(%s,%s) %s-%s, %s-%s", x, y, r, c,rFlag,cFlag));
+//            System.out.println(matrix[x][y]);
             rs.add(matrix[x][y]);
 
-            // 行模式
+            // 行遍历
             if (flag) {
                 if ((y == colNum - c/2 -1 && rFlag) || (y == c/2 && !rFlag)) {
-                    // 置为列模式
+                    // 置为列遍历
                     flag = false;
-                    // 行方向翻转
+                    // 遍历方向
                     rFlag = !rFlag;
                     r++;
                     x += cFlag ? 1 : -1;
