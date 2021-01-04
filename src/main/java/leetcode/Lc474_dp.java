@@ -35,11 +35,7 @@ public class Lc474_dp {
             int s1 = strs[i-1].length()-s0;
             for (int j = m; j >=s0; j--) {
                 for (int k = n; k >=s1; k--) {
-                    if (j<s0||k<s1) {
-                        dp[i][j][k] = dp[i-1][j][k];
-                    }else {
-                        dp[i][j][k] = max(dp[i-1][j][k], dp[i-1][j-s0][k-s1]+1);
-                    }
+                    dp[i][j][k] = max(dp[i-1][j][k], dp[i-1][j-s0][k-s1]+1);
                 }
             }
 
