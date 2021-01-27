@@ -24,13 +24,13 @@ public class Lc004_Array {
         // [1] [1,2,3,4]
         // midIndex=2
         // i=1,j=0
-        // index = midIndex-i
+        // j_index = midIndex-i
 
         // [1,3,5,7] [2,4,6,8]
         // midIndex=4
         // i=2,j=2
-        // index = minIndex(num1[i-1],num2[j-1])
-        // index1 = minIndex(maxIndex(num1[i-1],num2[j-1]), index+1)
+        // index = minValueIndex(num1[i],num2[j])
+        // index1 = index + 1
 
         if (i == nums1.length || j == nums2.length) {
             int rs1 = i == nums1.length ? nums2[midIndex-i] : nums1[midIndex-j];
