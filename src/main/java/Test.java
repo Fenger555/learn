@@ -17,16 +17,31 @@ public class Test {
 
     public static void main(String[] args) {
 
-        System.out.println(DateTimeFormatter.ofPattern("E L  dd HH:mm:ss yyyy").format(LocalDateTime.now()));
-        System.out.println(DateTimeFormatter.ofPattern("E M  dd HH:mm:ss yyyy").parse("星期三 2  03 17:00:36 2021"));
+        Map<Integer, Integer> groupingBinCntMap = Maps.newHashMap();
+        groupingBinCntMap.put(0,10);
+        groupingBinCntMap.put(1,20);
+        groupingBinCntMap.put(2,30);
+        groupingBinCntMap.put(6,5);
+        groupingBinCntMap.put(8,30);
+        groupingBinCntMap.put(7,30);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("E L  dd HH:mm:ss yyyy");
-        try {
-            Date parse = sdf.parse("Fri Dec  4 12:48:46 2020");
-            System.out.println(parse.toString());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        List<Integer> rs = groupingBinCntMap
+                .keySet()
+                .stream()
+                .collect(Collectors.toList())
+                .stream()
+                .sorted(
+                        new Comparator<Integer>() {
+                            @Override
+                            public int compare(Integer o1, Integer o2) {
+                                int rs = groupingBinCntMap.get(o2) - groupingBinCntMap.get(o1);
+                                return rs == 0 ? o1 - o2 : rs;
+                            }
+                        }
+                )
+                .collect(Collectors.toList());
+
+        System.out.println(rs);
 
 
     }
