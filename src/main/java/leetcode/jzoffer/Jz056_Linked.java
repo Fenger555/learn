@@ -4,7 +4,7 @@ package leetcode.jzoffer;
  * @Author gaoxing
  * @Date 2020-06-18 16:52
  */
-public class Jz56 {
+public class Jz056_Linked {
 
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
