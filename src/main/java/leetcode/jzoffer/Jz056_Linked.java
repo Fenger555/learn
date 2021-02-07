@@ -1,4 +1,4 @@
-package leetcode.jz;
+package leetcode.jzoffer;
 
 /**
  * @Author gaoxing
