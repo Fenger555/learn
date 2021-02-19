@@ -22,7 +22,7 @@ package leetcode.jzoffer;
  * @author Fenger
  * @date 2021-02-07 18:18
  */
-public class Jz012_dfs {
+public class Jz012_trackback {
 
     // 剪枝+dfs
     public boolean exist(char[][] board, String word) {
@@ -63,8 +63,8 @@ public class Jz012_dfs {
                 {'m', 'n', 'o', 'p'}
         };
 
-        Jz012_dfs jz012_dfs = new Jz012_dfs();
-        boolean rs = jz012_dfs.exist(board, "love");
+        Jz012_trackback jz012_trackback = new Jz012_trackback();
+        boolean rs = jz012_trackback.exist(board, "love");
         System.out.println(rs);
     }
 }
