@@ -35,7 +35,8 @@ public class Lc077_trackback {
 
     public void dfs(int n, int k, List<List<Integer>> rs, Deque<Integer> path, int depth, int begin) {
 
-        // 剪枝，极大优化
+        // 剪枝
+        // 如C(7,4)，当递归到5时，可选数只剩下两个，没有必要继续遍历下去
         if (depth + n - begin +1 -k <0) {
             return;
         }
@@ -55,7 +56,7 @@ public class Lc077_trackback {
 
     public static void main(String[] args) {
         Lc077_trackback lc077_trackback = new Lc077_trackback();
-        List<List<Integer>> rs = lc077_trackback.combine(10, 4);
+        List<List<Integer>> rs = lc077_trackback.combine(10, 8);
         System.out.println(rs);
     }
 
