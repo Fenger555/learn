@@ -35,23 +35,33 @@ public class Jz012_trackback {
         return false;
     }
 
-    public boolean dfs(char[][] board, char[] word, int i, int j, int k) {
-        if (i<0 || i>=board.length || j<0 || j>=board[0].length || board[i][j] != word[k]) {
+    /**
+     *
+     * @param board
+     * @param word
+     * @param pi
+     * @param pj
+     * @param depth
+     * @return
+     */
+    public boolean dfs(char[][] board, char[] word, int pi, int pj, int depth) {
+
+        // 剪枝
+        if (pi<0 || pi>=board.length || pj<0 || pj>=board[0].length || board[pi][pj] != word[depth]) {
             return false;
         }
 
-        if (k == word.length-1) {
+        if (depth == word.length-1) {
             return true;
         }
 
-        // 剪枝
-        board[i][j] = '\0';
-        boolean rs = dfs(board, word, i+1, j, k+1)
-                || dfs(board, word, i, j+1, k+1)
-                || dfs(board, word, i, j-1, k+1)
-                || dfs(board, word, i-1, j, k+1);
-        // 回溯
-        board[i][j] = word[k];
+        board[pi][pj] = '\0';
+        boolean rs = dfs(board, word, pi+1, pj, depth+1)
+                || dfs(board, word, pi, pj+1, depth+1)
+                || dfs(board, word, pi, pj-1, depth+1)
+                || dfs(board, word, pi-1, pj, depth+1);
+        // 还原，回溯
+        board[pi][pj] = word[depth];
         return rs;
     }
 
