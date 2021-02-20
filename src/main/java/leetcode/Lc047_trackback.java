@@ -4,18 +4,14 @@ import java.util.*;
 
 /**
  * 全排列
- * 给定一个 没有重复 数字的序列，返回其所有可能的全排列。
- * 示例:
- * 输入: [1,2,3]
- * 输出:
- * [
- *   [1,2,3],
- *   [1,3,2],
- *   [2,1,3],
- *   [2,3,1],
- *   [3,1,2],
- *   [3,2,1]
- * ]
+ * 给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列
+ *
+ * 示例 1：
+ * 输入：nums = [1,1,2]
+ * 输出：
+ * [[1,1,2],
+ *  [1,2,1],
+ *  [2,1,1]]
  *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/permutations
@@ -24,25 +20,21 @@ import java.util.*;
  * @author Fenger
  * @date 2021-02-19 17:28
  */
-public class Lc046_trackback {
+public class Lc047_trackback {
 
-    public List<List<Integer>> permute(int[] nums) {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);
         List<List<Integer>> rs = new ArrayList();
-
-//        List<Integer> list = new ArrayList();
-//        for (int num : nums) {
-//            list.add(num);
-//        }
-//        dfs1(rs, list, list.size(), 0);
-
         Deque<Integer> path = new ArrayDeque();
         boolean[] used = new boolean[nums.length];
+//        dfs1(rs, list, list.size(), 0);
         dfs(nums, nums.length, rs, path, 0, used);
         return rs;
     }
 
     /**
-     * 回溯
+     * 回溯 + 剪枝
+     *
      * @param nums
      *      原始数组
      * @param len
@@ -67,6 +59,12 @@ public class Lc046_trackback {
             if (used[i]) {
                 continue;
             }
+
+            // 剪枝
+            if (i>0 && nums[i] == nums[i-1] && !used[i-1]) {
+                continue;
+            }
+
             path.addLast(nums[i]);
             used[i] = true;
             dfs(nums, len, rs, path, depth+1, used);
@@ -76,30 +74,10 @@ public class Lc046_trackback {
 
     }
 
-    public void dfs1(List<List<Integer>> rs, List<Integer> list, int n, int k) {
-
-        if (n == k) {
-            rs.add(new ArrayList<>(list));
-        }
-
-        for (int i = k; i < n; i++) {
-            Collections.swap(list, i, k);
-            dfs1(rs, list, n, k+1);
-            Collections.swap(list, i, k);
-        }
-
-    }
-
-    // todo
-    public void bfs() {
-
-    }
-
     public static void main(String[] args) {
-
-        Lc046_trackback lc046_trackback = new Lc046_trackback();
-        int[] nums = {1, 2, 3};
-        List<List<Integer>> rs = lc046_trackback.permute(nums);
+        Lc047_trackback lc047_trackback = new Lc047_trackback();
+        int[] nums = {1, 1, 3};
+        List<List<Integer>> rs = lc047_trackback.permuteUnique(nums);
         System.out.println(rs);
     }
 
