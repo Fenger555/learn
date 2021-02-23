@@ -28,20 +28,25 @@ import java.util.List;
  */
 public class Lc060_trackback {
 
+    int depth;
+
     // todo 超时需优化
     public String getPermutation(int n, int k) {
         StringBuilder sb = new StringBuilder();
         boolean[] used = new boolean[n];
         List<String> rs = new ArrayList<>();
-        dfs(rs, sb, n, k, used);
-        return rs.get(k-1);
+        depth = 0;
+        return dfs(sb, n, k, used);
     }
 
-    public void dfs(List<String> rs, StringBuilder sb, int n, int k, boolean[] used) {
+    public String dfs(StringBuilder sb, int n, int k, boolean[] used) {
 
         if (sb.length() == n) {
-            rs.add(sb.toString());
-            return;
+//            rs.add(sb.toString());
+            if (++depth == k) {
+                return sb.toString();
+            }
+            return null;
         }
 
         for (int i = 1; i <= n; i++) {
@@ -50,15 +55,20 @@ public class Lc060_trackback {
             }
             used[i-1] = true;
             sb.append(i);
-            dfs(rs, sb, n, k, used);
+            String dfs = dfs(sb, n, k, used);
             used[i-1] = false;
             sb.deleteCharAt(sb.length()-1);
+            // 已找到结果，结束遍历
+            if (dfs != null) {
+                return dfs;
+            }
         }
+        return null;
     }
 
     public static void main(String[] args) {
         Lc060_trackback lc060_trackback = new Lc060_trackback();
-        String permutation = lc060_trackback.getPermutation(9, 4);
+        String permutation = lc060_trackback.getPermutation(3, 3);
         System.out.println(permutation);
     }
 }
