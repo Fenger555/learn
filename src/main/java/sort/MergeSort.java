@@ -11,7 +11,7 @@ public class MergeSort {
 
         for (int i = 0; i < arr1.length; i++) {
 
-            T v = arr1[1];
+            T v = arr1[i];
 
         }
 
